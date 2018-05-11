@@ -6,12 +6,12 @@ driver:
   security_group_ids: sg-be1403c0
   subnet_id: subnet-47600e1d
   associate_public_ip: true
-  instance_type: m3.medium ##t2.micro
+  instance_type: t2.micro
   tags:
     # Replace YOURNAME and YOURCOMPANY here
     Name: "Chef Training Node for <YOURNAME>, Rees"
     created-by: "test-kitchen"
-    ##user: administrator
+    user: Administrator
     X-Contact: <%= ENV['USER'] %>
     X-Application: <%= ENV['X_APPLICATION'] %>
     X-Customer: "Test-Kitchen"
@@ -25,14 +25,13 @@ verifier:
   name: inspec
   format: documentation
 
-verifier:
-  name: inspec
-
 platforms:
   - name: centos-7
-  transport:
-    username: centos
-    ssh_key:  ~\.ssh\id_rsa
+    transport:
+      username: centos
+      ssh_key:  ~\.ssh\id_rsa
+    driver_config:
+      user_data: C:/Users/chef/user_data
 
 suites:
   - name: default
@@ -40,5 +39,5 @@ suites:
       - recipe[bjc_linux_bootstrap::default]
     verifier:
       inspec_tests:
-        - test/integration/default
+        - test/smoke/default
     attributes:
