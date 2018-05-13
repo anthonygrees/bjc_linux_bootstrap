@@ -45,7 +45,7 @@ end
 bash 'Create client.rb' do
     code <<-EOH
 
-NODE_NAME=node-$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 4 | head -n 1)
+NODE_NAME=CentOS-AR-$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 4 | head -n 1)
 
 /bin/echo 'log_location     STDOUT' >> /etc/chef/client.rb
 /bin/echo -e "chef_server_url 'https://chef.automate-demo.com/organizations/automate'" >> /etc/chef/client.rb
