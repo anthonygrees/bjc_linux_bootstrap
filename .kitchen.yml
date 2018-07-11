@@ -3,7 +3,7 @@ driver:
   name: ec2
   aws_ssh_key_id: chef_demo_2x
   region: us-west-2
-  security_group_ids: sg-4d818e3c
+  security_group_ids: sg-4d818e3d
   subnet_id: subnet-4780c21d
   associate_public_ip: true
   instance_type: t2.micro
