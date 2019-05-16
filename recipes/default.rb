@@ -28,7 +28,7 @@ bash 'Install chef' do
     code <<-EOH
 cd /etc/chef/
 
-curl -L https://omnitruck.chef.io/install.sh | bash || error_exit 'could not install chef'
+curl -L https://omnitruck.chef.io/install.sh | bash -s -- -P chef -v 14.12.3 || error_exit 'could not install chef'
 
 # Create first-boot.json
 cat > "/etc/chef/first-boot.json" << EOF
