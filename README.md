@@ -6,7 +6,7 @@ This cookbook uses kitchen to stand up a CentOS Linux instance in AWS for a stud
 ## Recipes
 
 ### default.rb
-Bootstraps the instance to the Chef Server and Chef Automate
+Bootstraps the instance to the Chef Server and Chef Automate.  It is currently locked to Chef 14.
 
 ### run_client.rb
 Runs the Chef Client on the Linux Node to take the latest cookbooks off the Chef Server
