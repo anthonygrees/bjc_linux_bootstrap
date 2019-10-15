@@ -12,8 +12,8 @@ driver:
     Name: "Chef Training Node for <YOURNAME>, Rees"
     user: Administrator
     X-Contact: "Anthony Rees"
-    X-Application: "apac"
-    X-Dept: "sales"
+    X-Application: "APAC"
+    X-Dept: "Sales"
     X-Customer: "Rees"
     X-Project: "BJC-Demo"
     X-Termination-Date: "2018-07-20T12:04:30Z"
