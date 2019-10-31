@@ -1,4 +1,4 @@
-# bjc_linux_bootstrap
+# Linux Chef Bootstrap - bjc_linux_bootstrap
 
 ## Description
 This cookbook uses kitchen to stand up a CentOS Linux instance in AWS for a student to use in the Chef InSpec Compliance Training
