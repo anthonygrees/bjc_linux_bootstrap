@@ -17,8 +17,8 @@ end
 bash 'Setup hosts file correctly' do
     code <<-EOH
 cat > "/etc/hosts" << EOF
-34.217.138.14 chef.automate-demo.com
-54.189.109.178 automate.automate-demo.com
+34.213.43.212 chef.automate-demo.com
+34.219.109.175 automate.automate-demo.com
 EOF
 
 EOH
