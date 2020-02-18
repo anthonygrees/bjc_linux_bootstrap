@@ -59,7 +59,7 @@ end
 bash 'Run It' do
     code <<-EOH
 
-sudo chef-client -j /etc/chef/first-boot.json
+sudo chef-client --chef-license accept -j /etc/chef/first-boot.json
 
 EOH
 end
