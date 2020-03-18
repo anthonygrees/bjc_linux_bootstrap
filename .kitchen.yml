@@ -33,7 +33,7 @@ platforms:
   - name: centos-7
     transport:
       username: centos
-      ssh_key:  ~\.ssh\id_rsa
+      ssh_key: C:\Users\Chef\.ssh\id_rsa
     driver_config:
       user_data: C:/Users/chef/user_data
 
