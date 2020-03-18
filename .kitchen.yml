@@ -41,7 +41,6 @@ suites:
   - name: default
     run_list:
       - recipe[bjc_linux_bootstrap::default]
-    #  - recipe[bjc_linux_bootstrap::run_client]
     verifier:
       inspec_tests:
         - test/smoke/default
