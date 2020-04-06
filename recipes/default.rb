@@ -14,15 +14,15 @@ bash 'Do some chef pre-work' do
 EOH
 end
 
-bash 'Setup hosts file correctly' do
-    code <<-EOH
-cat > "/etc/hosts" << EOF
-34.209.176.239 chef.automate-demo.com
-54.186.15.121 automate.automate-demo.com
-EOF
-
-EOH
-end
+# bash 'Setup hosts file correctly' do
+#    code <<-EOH
+# cat > "/etc/hosts" << EOF
+# 34.209.176.239 chef.automate-demo.com
+# 54.186.15.121 automate.automate-demo.com
+# EOF
+#
+# EOH
+# end
 
 bash 'Install chef' do
     code <<-EOH
@@ -48,8 +48,7 @@ bash 'Create client.rb' do
 NODE_NAME=CentOS-AR-$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 4 | head -n 1)
 
 /bin/echo 'log_location     STDOUT' >> /etc/chef/client.rb
-/bin/echo -e "chef_server_url 'https://chef.automate-demo.com/organizations/automate'" >> /etc/chef/client.rb
-/bin/echo -e "validation_client_name 'automate-validator'" >> /etc/chef/client.rb
+/bin/echo -e "chef_server_url 'https://$ENV['AUTOMATE_HOSTNAME']/organizations/$ENV['CHEF_ORG']'" >> /etc/chef/client.rb
 /bin/echo -e "validation_key '/tmp/kitchen/cookbooks/bjc_linux_bootstrap/recipes/validator.pem'" >> /etc/chef/client.rb
 /bin/echo -e "node_name '${NODE_NAME}'" >> /etc/chef/client.rb
 /bin/echo -e "ssl_verify_mode :verify_none" >> /etc/chef/client.rb
@@ -59,7 +58,7 @@ end
 bash 'Run It' do
     code <<-EOH
 
-sudo chef-client -j /etc/chef/first-boot.json
+sudo chef-client
 
 EOH
 end
