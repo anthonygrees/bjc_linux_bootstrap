@@ -49,7 +49,7 @@ NODE_NAME=CentOS-AR-$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 4 | head -
 
 /bin/echo 'log_location     STDOUT' >> /etc/chef/client.rb
 /bin/echo -e "chef_server_url 'https://$ENV['AUTOMATE_HOSTNAME']/organizations/$ENV['CHEF_ORG']'" >> /etc/chef/client.rb
-/bin/echo -e "validation_key '/tmp/kitchen/cookbooks/bjc_linux_bootstrap/recipes/validator.pem'" >> /etc/chef/client.rb
+/bin/echo -e "validation_key '/tmp/kitchen/cookbooks/linux_node/recipes/validator.pem'" >> /etc/chef/client.rb
 /bin/echo -e "node_name '${NODE_NAME}'" >> /etc/chef/client.rb
 /bin/echo -e "ssl_verify_mode :verify_none" >> /etc/chef/client.rb
 EOH
