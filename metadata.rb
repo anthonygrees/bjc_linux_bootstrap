@@ -1,9 +1,9 @@
-name 'bjc_linux_bootstrap'
+name 'linux_node'
 maintainer 'The Authors'
-maintainer_email 'you@example.com'
+maintainer_email 'anthony@chef.io'
 license 'All Rights Reserved'
-description 'Installs/Configures bjc_linux_bootstrap'
-long_description 'Installs/Configures bjc_linux_bootstrap'
+description 'Installs/Configures and bootstraps a Linux Node'
+long_description 'Installs/Configures and bootstraps a Linux Node'
 version '0.1.0'
 chef_version '>= 12.14' if respond_to?(:chef_version)
 
