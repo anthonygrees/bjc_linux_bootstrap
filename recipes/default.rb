@@ -14,41 +14,16 @@ bash 'Do some chef pre-work' do
 EOH
 end
 
-# bash 'Setup hosts file correctly' do
-#    code <<-EOH
-# cat > "/etc/hosts" << EOF
-# 34.209.176.239 chef.automate-demo.com
-# 54.186.15.121 automate.automate-demo.com
-# EOF
-#
-# EOH
-# end
-
-bash 'Install chef' do
-    code <<-EOH
-cd /etc/chef/
-
-curl -L https://omnitruck.chef.io/install.sh | bash -s -- -P chef -v 14.12.3 || error_exit 'could not install chef'
-
-# Create first-boot.json
-cat > "/etc/chef/first-boot.json" << EOF
-{
-   "run_list" :[
-   "role[base]"
-   ]
-}
-EOF
-
-EOH
-end
-
 bash 'Create client.rb' do
     code <<-EOH
 
 NODE_NAME=CentOS-AR-$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 4 | head -n 1)
 
+AUTOMATE_HOSTNAME = $ENV['AUTOMATE_HOSTNAME']
+CHEF_ORG = $ENV['CHEF_ORG']
+
 /bin/echo 'log_location     STDOUT' >> /etc/chef/client.rb
-/bin/echo -e "chef_server_url 'https://$ENV['AUTOMATE_HOSTNAME']/organizations/$ENV['CHEF_ORG']'" >> /etc/chef/client.rb
+/bin/echo -e "chef_server_url 'https://${AUTOMATE_HOSTNAME}/organizations/${CHEF_ORG}'" >> /etc/chef/client.rb
 /bin/echo -e "validation_key '/tmp/kitchen/cookbooks/linux_node/recipes/validator.pem'" >> /etc/chef/client.rb
 /bin/echo -e "node_name '${NODE_NAME}'" >> /etc/chef/client.rb
 /bin/echo -e "ssl_verify_mode :verify_none" >> /etc/chef/client.rb
