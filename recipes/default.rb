@@ -19,9 +19,6 @@ bash 'Create client.rb' do
 
 NODE_NAME=CentOS-AR-$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 4 | head -n 1)
 
-AUTOMATE_HOSTNAME = $ENV['AUTOMATE_HOSTNAME']
-CHEF_ORG = $ENV['CHEF_ORG']
-
 /bin/echo 'log_location     STDOUT' >> /etc/chef/client.rb
 /bin/echo -e "chef_server_url 'https://#{['AUTOMATE_HOSTNAME']}/organizations/#{['CHEF_ORG']}'" >> /etc/chef/client.rb
 /bin/echo -e "validation_key '/tmp/kitchen/cookbooks/linux_node/recipes/validator.pem'" >> /etc/chef/client.rb
