@@ -24,6 +24,8 @@ NODE_NAME=CentOS-AR-$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 4 | head -
 /bin/echo -e "validation_key '/tmp/kitchen/cookbooks/linux_node/recipes/validator.pem'" >> /etc/chef/client.rb
 /bin/echo -e "node_name '${NODE_NAME}'" >> /etc/chef/client.rb
 /bin/echo -e "ssl_verify_mode :verify_none" >> /etc/chef/client.rb
+/bin/echo -e "policy_group 'development'" >> /etc/chef/client.rb
+/bin/echo -e "policy_name 'base_linux'" >> /etc/chef/client.rb
 EOH
 end
 
