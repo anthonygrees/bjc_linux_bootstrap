@@ -45,3 +45,6 @@ suites:
       inspec_tests:
         - test/smoke/default
     attributes:
+      environment:
+       automate_url: ENV['AUTOMATE_HOSTNAME'],
+       chef_org: ENV['CHEF_ORG']
