@@ -17,7 +17,9 @@ end
 bash 'Create client.rb' do
     code <<-EOH
 
-NODE_NAME=CentOS-AR-$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 4 | head -n 1)
+YOUR_NAME='Reesy'
+
+NODE_NAME=CentOS-${YOUR_NAME}-$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 4 | head -n 1)
 
 /bin/echo 'log_location     STDOUT' >> /etc/chef/client.rb
 /bin/echo -e "chef_server_url 'https://#{node['environment']['automate_url']}/organizations/#{node['environment']['chef_org']}'" >> /etc/chef/client.rb
