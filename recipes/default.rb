@@ -3,6 +3,10 @@
 # Recipe:: default
 #
 # Copyright:: 2018, The Authors, All Rights Reserved.
+template '/home/centos/waiver.yml' do
+    source 'waiver.yml.erb'
+end
+
 bash 'Do some chef pre-work' do
     code <<-EOH
 
