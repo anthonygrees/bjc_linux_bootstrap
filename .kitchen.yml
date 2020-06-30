@@ -24,6 +24,7 @@ provisioner:
   name: chef_zero
   product_name: chef
   chef_license: accept
+  product_version: 15.12.22
   
 verifier:
   name: inspec
