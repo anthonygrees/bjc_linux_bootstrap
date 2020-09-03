@@ -32,13 +32,7 @@ NODE_NAME=CentOS-${YOUR_NAME}-$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 
 /bin/echo -e "ssl_verify_mode :verify_none" >> /etc/chef/client.rb
 /bin/echo -e "policy_group 'development'" >> /etc/chef/client.rb
 /bin/echo -e "policy_name 'base_linux'" >> /etc/chef/client.rb
-EOH
-end
-
-bash 'Run It' do
-    code <<-EOH
-
 sudo chef-client
-
 EOH
+not_if { ::File.exist?('/etc/chef/client.rb') }
 end
